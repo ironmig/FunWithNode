@@ -30,6 +30,9 @@ https.createServer(options, function(request,response) {
 		case '.png':
 			contentType='image/png';
 			break;
+		case '.txt': //Text files are text/plain
+			contentType='text/plain';
+			break;
 		case '':
 			contentType='text/html';
 			pathname = url.resolve(pathname+'/','index.html');
