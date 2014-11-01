@@ -3,11 +3,12 @@ var fs = require('fs');
 var path = require('path');
 var url = require('url');
 var http = require ('http');
-var options = {
+var options = { //Stores https server setting like cert and key
 	cert: fs.readFileSync('/etc/nginx/ssl/ssl-unified.crt'),
  	key: fs.readFileSync('/etc/nginx/ssl/riptiderobotics-dec.key')
 }
-var rootDir="/var/www/testwords";
+
+var rootDir="/var/www/testwords"; //Directory of web content, all requests are appended to this path
 https.createServer(options, function(request,response) {
     console.log('request starting at: '+request.url);
 
@@ -17,7 +18,7 @@ https.createServer(options, function(request,response) {
 	console.log('extention: '+(extention || 'no extention'));
 	var contentType='text/html';
 
-	switch (extention) {
+	switch (extention) { //Selects HTTP content-type bassed on file extension
 		case '.js':
 			contentType = 'text/javascript';
 			break;
@@ -33,7 +34,7 @@ https.createServer(options, function(request,response) {
 		case '.txt': //Text files are text/plain
 			contentType='text/plain';
 			break;
-		case '':
+		case '': //If there is no extension, add index.html to desired file path
 			contentType='text/html';
 			pathname = url.resolve(pathname+'/','index.html');
 			break;
