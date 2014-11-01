@@ -34,6 +34,9 @@ https.createServer(options, function(request,response) {
 		case '.txt': //Text files are text/plain
 			contentType='text/plain';
 			break;
+		case '.jpg':
+			contentType='image/jpeg';
+			break;
 		case '': //If there is no extension, add index.html to desired file path
 			contentType='text/html';
 			pathname = url.resolve(pathname+'/','index.html');
