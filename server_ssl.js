@@ -27,6 +27,9 @@ https.createServer(options, function(request,response) {
 		case '.html':
 			contentType='text/html';
 			break;
+		case '.png':
+			contentType='image/png';
+			break;
 		case '':
 			contentType='text/html';
 			pathname = url.resolve(pathname+'/','index.html');
