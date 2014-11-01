@@ -37,6 +37,9 @@ https.createServer(options, function(request,response) {
 		case '.jpg':
 			contentType='image/jpeg';
 			break;
+		case '.mp3'; //Adds mp3 file type. This should be changed to be async as can be large file
+			contentType='audio/mpeg';
+			break;
 		case '': //If there is no extension, add index.html to desired file path
 			contentType='text/html';
 			pathname = url.resolve(pathname+'/','index.html');
